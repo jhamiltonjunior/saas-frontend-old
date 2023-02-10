@@ -162,17 +162,19 @@ const RegisterPage = () => {
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}>
-              Adventure starts here 🚀
+            A aventura começa aqui!
             </Typography>
             <Typography variant='body2'>Make your app management easy and fun!</Typography>
           </Box>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='username' label='Username' sx={{ marginBottom: 4 }} />
-            <TextField fullWidth type='email' label='Email' sx={{ marginBottom: 4 }} />
+          <form noValidate method='POST' action='http://localhost:5000/api/user' autoComplete='on'>
+          {/* onSubmit={e => e.preventDefault()} */}
+            <TextField autoFocus fullWidth id='username' name='name' label='Username' sx={{ marginBottom: 4 }} />
+            <TextField fullWidth type='email' label='Email' name='email' sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-register-password'>Password</InputLabel>
               <OutlinedInput
                 label='Password'
+                name='password'
                 value={values.password}
                 id='auth-register-password'
                 onChange={handleChange('password')}
