@@ -12,6 +12,7 @@ import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
 
 // ** Type import
 import { VerticalNavItemsType } from 'src/@core/layouts/types'
+import { GoogleAnalytics } from 'mdi-material-ui'
 
 const navigation = (): VerticalNavItemsType => {
   return [
@@ -31,13 +32,13 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'Login',
       icon: Login,
-      path: '/pages/login',
+      path: '/login',
       openInNewTab: true
     },
     {
       title: 'Register',
       icon: AccountPlusOutline,
-      path: '/pages/register',
+      path: '/register',
       openInNewTab: true
     },
     {
@@ -45,6 +46,14 @@ const navigation = (): VerticalNavItemsType => {
       icon: AlertCircleOutline,
       path: '/pages/error',
       openInNewTab: true
+    },
+    {
+      sectionTitle: 'Tasks'
+    },
+    {
+      title: 'Analytics',
+      icon: GoogleAnalytics,
+      path: '/tasks'
     },
     {
       sectionTitle: 'User Interface'
