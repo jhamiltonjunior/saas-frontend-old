@@ -71,7 +71,6 @@ const LoginPage = () => {
 
   // ** Hook
   const theme = useTheme()
-  const router = useRouter()
 
   const handleChange = (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value })
@@ -168,12 +167,13 @@ const LoginPage = () => {
             </Typography>
             <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
           </Box>
-          <form noValidate action='http://localhost:5000/api/user' autoComplete='on' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='email' label='Email' sx={{ marginBottom: 4 }} />
+          <form noValidate method='POST' action='http://localhost:5000/api/user' autoComplete='on'>
+            <TextField autoFocus fullWidth id='email' label='Email' name='email' sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
                 label='Password'
+                name='password'
                 value={values.password}
                 id='auth-login-password'
                 onChange={handleChange('password')}
@@ -200,15 +200,17 @@ const LoginPage = () => {
                 <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
               </Link>
             </Box>
+            
             <Button
               fullWidth
               size='large'
               variant='contained'
               sx={{ marginBottom: 7 }}
-              onClick={() => router.push('/')}
+              type='submit'
             >
               Login
             </Button>
+            
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Typography variant='body2' sx={{ marginRight: 2 }}>
                 New on our platform?
@@ -219,7 +221,9 @@ const LoginPage = () => {
                 </Link>
               </Typography>
             </Box>
+            
             <Divider sx={{ my: 5 }}>or</Divider>
+            
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Link href='/' passHref>
                 <IconButton component='a' onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}>
