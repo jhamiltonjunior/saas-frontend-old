@@ -1,6 +1,8 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
+import { getCookie, getCookies } from 'cookies-next';
+
 // ** Icons Imports
 import Poll from 'mdi-material-ui/Poll'
 import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
@@ -98,9 +100,14 @@ const Dashboard = () => {
     )
 }
 
-export async function getServerSideProps({ res }: any) {
-  // console.log(req.Authorization)
-  console.log(res)
+export async function getServerSideProps({ req }: any) {
+ const token = getCookie('token', { req })
+
+ if (typeof token === undefined) {
+  
+ }
+
+  console.log(typeof token)
 
   return {
     props: {
