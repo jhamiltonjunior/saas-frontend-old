@@ -15,6 +15,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
 import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations'
+import { Grid } from '@mui/material'
 
 // ** Styled Components
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -44,16 +45,23 @@ const Error401 = () => {
         <BoxWrapper>
           <Typography variant='h1'>401</Typography>
           <Typography variant='h5' sx={{ mb: 1, fontSize: '1.5rem !important' }}>
-            You are not authorized! 🔐
+            Você Não Está Autorizado! 🔐
           </Typography>
-          <Typography variant='body2'>You don&prime;t have permission to access this page. Go Home!</Typography>
+          <Typography variant='body2'>Você não tem permissão para acessar esta página. Registre-se ou faça Login!</Typography>
         </BoxWrapper>
         <Img height='487' alt='error-illustration' src='/images/pages/401.png' />
-        <Link passHref href='/'>
-          <Button component='a' variant='contained' sx={{ px: 5.5 }}>
-            Back to Home
-          </Button>
-        </Link>
+        <Grid>
+          <Link passHref href='/login'>
+            <Button component='a' variant='contained' sx={{ px: 5.5 }}>
+              Login
+            </Button>
+          </Link>
+          <Link passHref href='/register'>
+            <Button component='a' variant='contained' sx={{ marginLeft: 8, px: 5.5 }}>
+              Registrar
+            </Button>
+          </Link>
+        </Grid>
       </Box>
       <FooterIllustrations />
     </Box>
