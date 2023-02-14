@@ -162,11 +162,11 @@ const RegisterPage = () => {
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}>
-            A aventura começa aqui!
+            A Aventura Começa Aqui!
             </Typography>
             <Typography variant='body2'>Make your app management easy and fun!</Typography>
           </Box>
-          <form noValidate method='POST' action='http://localhost:5000/api/user' autoComplete='on'>
+          <form noValidate method='POST' action='http://localhost:5000/api/user/register' autoComplete='on'>
           {/* onSubmit={e => e.preventDefault()} */}
             <TextField autoFocus fullWidth id='username' name='name' label='Username' sx={{ marginBottom: 4 }} />
             <TextField fullWidth type='email' label='Email' name='email' sx={{ marginBottom: 4 }} />

@@ -1,5 +1,5 @@
 // ** React Imports
-import { ChangeEvent, MouseEvent, ReactNode, useEffect, useState } from 'react'
+import { ChangeEvent, MouseEvent, ReactNode, useState } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -39,7 +39,6 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
-import { useRouter } from 'next/router'
 
 interface State {
   password: string
@@ -65,13 +64,9 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
 }))
 
 const LoginPage = () => {
-
-  const router = useRouter()
-  console.log('query', router.query)
-
-  useEffect(function() {
-    console.log(window.localStorage)
-},[]);
+//   useEffect(function() {
+//     console.log(window.localStorage)
+// },[]);
 
   // ** State
   const [values, setValues] = useState<State>({
