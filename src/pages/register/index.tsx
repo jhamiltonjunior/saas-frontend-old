@@ -168,7 +168,9 @@ const RegisterPage = () => {
           </Box>
           <form noValidate method='POST' action='http://localhost:5000/api/user/register' autoComplete='on'>
           {/* onSubmit={e => e.preventDefault()} */}
-            <TextField autoFocus fullWidth id='username' name='name' label='Username' sx={{ marginBottom: 4 }} />
+            <TextField autoFocus fullWidth id='Nome' name='name' label='Username' sx={{ marginBottom: 4 }} />
+            <TextField fullWidth type='text' label='Celular (opcional)' name='mobilePhone' sx={{ marginBottom: 4 }} />
+            <TextField fullWidth type='text' label='CPF ou CNPJ (opcional)' name='cpfCnpj' sx={{ marginBottom: 4 }} />
             <TextField fullWidth type='email' label='Email' name='email' sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-register-password'>Password</InputLabel>
@@ -203,6 +205,15 @@ const RegisterPage = () => {
                       privacy policy & terms
                     </LinkStyled>
                   </Link>
+                </Fragment>
+              }
+            />
+            <FormControlLabel
+            name='notificationDisabled'
+              control={<Checkbox />}
+              label={
+                <Fragment>
+                  <span>Nao quero receber notificacoes!</span>
                 </Fragment>
               }
             />
