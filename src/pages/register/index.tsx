@@ -166,7 +166,7 @@ const RegisterPage = () => {
             </Typography>
             <Typography variant='body2'>Make your app management easy and fun!</Typography>
           </Box>
-          <form noValidate method='POST' action='http://localhost:5000/api/user/register' autoComplete='on'>
+          <form method='POST' action='http://localhost:5000/api/user/register' autoComplete='on'>
           {/* onSubmit={e => e.preventDefault()} */}
             <TextField autoFocus fullWidth id='Nome' name='name' label='Username' sx={{ marginBottom: 4 }} />
             <TextField fullWidth type='text' label='Celular (opcional)' name='mobilePhone' sx={{ marginBottom: 4 }} />

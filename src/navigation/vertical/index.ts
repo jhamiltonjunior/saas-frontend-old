@@ -12,7 +12,7 @@ import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
 
 // ** Type import
 import { VerticalNavItemsType } from 'src/@core/layouts/types'
-import { GoogleAnalytics } from 'mdi-material-ui'
+import { Clock, ClockEdit, GoogleAnalytics } from 'mdi-material-ui'
 
 const navigation = (): VerticalNavItemsType => {
   return [
@@ -54,6 +54,11 @@ const navigation = (): VerticalNavItemsType => {
       title: 'Analytics',
       icon: GoogleAnalytics,
       path: '/tasks'
+    },
+    {
+      title: 'Contador',
+      icon: ClockEdit,
+      path: '/counter'
     },
     {
       sectionTitle: 'User Interface'

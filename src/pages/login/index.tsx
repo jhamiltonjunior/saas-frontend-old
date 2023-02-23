@@ -172,7 +172,7 @@ const LoginPage = () => {
             </Typography>
             <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
           </Box>
-          <form noValidate method='POST' action='http://localhost:5000/api/user' autoComplete='on'>
+          <form method='POST' action='http://localhost:5000/api/user/auth' autoComplete='on'>
             <TextField autoFocus fullWidth id='email' label='Email' name='email' sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
