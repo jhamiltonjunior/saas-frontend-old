@@ -17,7 +17,7 @@ import { ApexOptions } from 'apexcharts'
 // ** Custom Components Imports
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-const WeeklyOverview = () => {
+const TasksCreated = () => {
   // ** Hook
   const theme = useTheme()
 
@@ -112,4 +112,4 @@ const WeeklyOverview = () => {
   )
 }
 
-export default WeeklyOverview
+export default TasksCreated

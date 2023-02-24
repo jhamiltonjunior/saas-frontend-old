@@ -10,8 +10,8 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
 import TotalEarning from 'src/views/dashboard/TotalEarning'
-import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
 import CreateCounter from 'src/views/tasks/CreateTasks'
+import TasksCreated from 'src/views/tasks/TasksCreated'
 
 const Counter = () => {
   return (
@@ -21,7 +21,7 @@ const Counter = () => {
           <CreateCounter />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <WeeklyOverview />
+          <TasksCreated />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <TotalEarning />

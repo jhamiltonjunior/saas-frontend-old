@@ -14,7 +14,8 @@ import TextField from '@mui/material/TextField'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import { FormControl} from '@mui/material'
 import Icon from '@mdi/react';
-import { mdiPlay } from '@mdi/js';
+import { mdiPause, mdiPlay, mdiStop } from '@mdi/js';
+import { clock } from 'src/clock/index'
 
 const CreateCounter = () => {
   return (
@@ -47,6 +48,7 @@ const CreateCounter = () => {
           <FormControl fullWidth sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
             <Box sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
               <TextField autoFocus fullWidth id='newProject' label='Ex: Consultoria' name='newProject' sx={{ width: '65%' }} />
+              
               <Typography
                 component="h2"
                 fontWeight='bold'
@@ -54,17 +56,61 @@ const CreateCounter = () => {
               >
                 00:00:00
               </Typography>
+
+              <Typography
+                component="p"
+                fontWeight='bold'
+                className='message'
+                style={{ display: 'none' }}
+              >
+              </Typography>
+              
               <Button
                 fullWidth 
+                onClick={(e) => {
+                  e.preventDefault()
+                  clock()
+                }}
 
-                onClick={(e) => e.preventDefault()}
+                className='init'
 
                 size='medium'
                 variant='contained'
                 sx={{ width: '20%' }}
-                type='submit'
               >
                 Iniciar <Icon path={mdiPlay} size={1} style={{ marginLeft: 6} } />
+              </Button>
+
+              <Button
+                fullWidth 
+                onClick={(e) => {
+                  e.preventDefault()
+                  clock()
+                }}
+
+                className='pause'
+
+                size='medium'
+                variant='contained'
+                sx={{ width: '10%', display: 'none' }}
+              >
+                Pausar <Icon path={mdiPause} size={1} style={{ marginLeft: 2} } />
+              </Button>
+
+              <Button
+                fullWidth 
+                onClick={(e) => {
+                  e.preventDefault()
+                  clock()
+                }}
+
+                className='stop'
+
+                size='medium'
+                variant='contained'
+                sx={{ width: '10%', display: 'none' }}
+              >
+                Parar <Icon path={mdiStop} size={1} style={{ marginLeft: 2} } />
               </Button>
             </Box>
 
