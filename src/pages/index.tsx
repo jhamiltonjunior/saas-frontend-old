@@ -101,12 +101,12 @@ const Dashboard = () => {
 }
 
 export async function getServerSideProps({ req, res }: any) {
-  const token = getCookie('token', { req })
+  // const token = getCookie('token', { req })
 
-  if (token === undefined) {
-    res.writeHead(401, { location: '/not-allowed' });
-    res.end()
-  }
+  // if (token === undefined) {
+  //   res.writeHead(401, { location: '/not-allowed' });
+  //   res.end()
+  // }
 
 
   return {

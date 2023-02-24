@@ -17,7 +17,7 @@ type ThemeConfig = {
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'Time Analyzer' /* App Name */,
+  templateName: 'Time Scope' /* App Name */,
   mode: 'light' /* light | dark */,
   contentWidth: 'boxed' /* full | boxed */,
 
@@ -26,7 +26,7 @@ const themeConfig: ThemeConfig = {
 
   // ** Navigation (Menu) Configs
   menuTextTruncate: true /* true | false */,
-  navigationSize: 260 /* Number in PX(Pixels) /*! Note: This is for Vertical navigation menu only */,
+  navigationSize: 220 /* Number in PX(Pixels) /*! Note: This is for Vertical navigation menu only */,
 
   // ** Other Configs
   responsiveFontSizes: true /* true | false */,

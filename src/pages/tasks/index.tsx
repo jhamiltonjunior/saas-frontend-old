@@ -1,8 +1,6 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
-import { getCookie } from 'cookies-next';
-
 // ** Icons Imports
 
 // ** Custom Components Imports
@@ -31,22 +29,6 @@ const Counter = () => {
       </Grid>
     </ApexChartWrapper>
   )
-}
-
-export async function getServerSideProps({ req, res }: any) {
-  const token = getCookie('token', { req })
-
-  if (token === undefined) {
-    res.writeHead(401, { location: '/not-allowed' });
-    res.end()
-  }
-
-
-  return {
-    props: {
-      location: 'data',
-    },
-  }
 }
 
 export default Counter

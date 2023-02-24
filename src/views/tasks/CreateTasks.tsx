@@ -2,7 +2,6 @@
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import IconButton from '@mui/material/IconButton'
@@ -13,7 +12,9 @@ import TextField from '@mui/material/TextField'
 
 // ** Icons Imports
 import DotsVertical from 'mdi-material-ui/DotsVertical'
-import { FormControl } from '@mui/material'
+import { FormControl} from '@mui/material'
+import Icon from '@mdi/react';
+import { mdiPlay } from '@mdi/js';
 
 const CreateCounter = () => {
   return (
@@ -42,19 +43,29 @@ const CreateCounter = () => {
         }}
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(3)} !important` }}>
-        <form method='POST' action='http://localhost:5000/api/user/auth' autoComplete='on'>
-          <FormControl fullWidth sx={{ width: 1 }}>
-            <TextField autoFocus fullWidth id='newProject' label='Ex: Consultoria' name='newProject' sx={{ marginBottom: 4, width: '75%' }} />
+        <form method='POST' action='http://localhost:5001/api/' autoComplete='on'  >
+          <FormControl fullWidth sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
+            <Box sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
+              <TextField autoFocus fullWidth id='newProject' label='Ex: Consultoria' name='newProject' sx={{ width: '65%' }} />
+              <Typography
+                component="h2"
+                fontWeight='bold'
+              >
+                00:00:00
+              </Typography>
+              <Button
+                fullWidth 
 
-            <Button
-              fullWidth
-              size='medium'
-              variant='contained'
-              sx={{ marginBottom: 7, width: '25%' }}
-              type='submit'
-            >
-              Criar
-            </Button>
+                onClick={(e) => e.preventDefault()}
+
+                size='medium'
+                variant='contained'
+                sx={{ width: '20%' }}
+                type='submit'
+              >
+                Iniciar <Icon path={mdiPlay} size={1} style={{ marginLeft: 6} } />
+              </Button>
+            </Box>
 
           </FormControl>
 

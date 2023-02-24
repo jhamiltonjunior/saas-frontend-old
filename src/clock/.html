@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Modelo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="container">
+        <h1>Meu timer</h1>
+        <div class="center">
+
+            <div class="wrap">
+                <!-- 
+                    se você for inserir mais um input favo rever o codigo JavaScript
+                    lá estou usando querySelector('input')
+                -->
+                <input class="timer-name" type="text" placeholder="write here...">
+                <button class="insert-timer-name" type="button">Insert Name</button>
+                
+                <div class="get-timer-name"></div>
+            </div>
+
+            <p class="relogio">00:00:00</p>
+            <button class="iniciar">iniciar</button>
+            <button class="pausar">pausar</button>
+            <button class="zerar">zerar</button>
+        </div>
+        <p class="mensagem"></p>
+        <div class="old-timer">
+            <h2 class="old-timer-log">Seu log</h3>
+            <h3 class="old-timer-name"></h3>
+            <p class="old-timer-content"></p>
+        </div>
+    </section>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
