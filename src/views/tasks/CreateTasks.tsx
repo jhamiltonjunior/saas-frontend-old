@@ -50,6 +50,7 @@ const CreateCounter = () => {
               <Typography
                 component="h2"
                 fontWeight='bold'
+                className='clock'
               >
                 00:00:00
               </Typography>

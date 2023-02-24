@@ -1,5 +1,5 @@
-export function relogio(){
-  function criarHoraDosSegundos (segundos: number) {
+export function clock(){
+  function createHourOfSecounds (segundos: number) {
       const data = new Date(segundos * 1000)
       
       return data.toLocaleTimeString('pt-BR', {
@@ -10,7 +10,7 @@ export function relogio(){
   }
 
 
-  const relogio = document.querySelector('.timer')
+  const clock = document.querySelector('.clock') as Element
   
   // não preciso dessas variaveis
   // preciso apenas quando for usar a segundo opção de código
@@ -30,12 +30,12 @@ export function relogio(){
   const oldTimerContent = document.querySelector('.old-timer-content')
   
   let segundos = 0
-  let timer
+  let timer: NodeJS.Timer
 
   function iniciaRelogio(){
       timer = setInterval(function(){
           segundos++
-          relogio.innerHTML = criarHoraDosSegundos(segundos)
+          clock.innerHTML = createHourOfSecounds(segundos)
       }, 1000)
   }
 
@@ -49,11 +49,13 @@ export function relogio(){
   document.addEventListener('click', function(e){
       const element = e.target
       
-      if(element.classList.contains('insert-timer-name')) {
-          if(input.classList.contains('timer-name')){
-              getTimerName.innerHTML = input.value
-              input.value = ""
-          }
+      if (element && input && getTimerName) {
+        if (element.classList.contains('insert-timer-name')) {
+            if (input.classList.contains('timer-name')){
+                getTimerName.innerHTML = input.value
+                input.value = ""
+            }
+        }
       }
 
       if(element.classList.contains('iniciar')){
