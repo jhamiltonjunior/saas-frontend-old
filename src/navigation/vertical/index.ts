@@ -53,12 +53,12 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'Analytics',
       icon: GoogleAnalytics,
-      path: '/tasks'
+      path: '/analytics'
     },
     {
-      title: 'Contador',
+      title: 'Tarefas',
       icon: ClockEdit,
-      path: '/counter'
+      path: '/tasks'
     },
     {
       sectionTitle: 'User Interface'
