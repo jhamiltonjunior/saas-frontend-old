@@ -60,7 +60,7 @@ export const clock = () => {
           }
         }
   
-        if(element.classList.contains('init')){
+        if(element &&   element.classList.contains('init')){
             clock.classList.remove('pausado')
             clearInterval(timer)
             iniciaRelogio()

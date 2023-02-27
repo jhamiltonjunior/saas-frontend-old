@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import { Typography } from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -21,12 +22,12 @@ export default function PopUp() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpen(true)
   };
 
   const handleClose = () => {
     setOpen(false);
-  };
+  }
 
   return (
     <div>
@@ -42,10 +43,16 @@ export default function PopUp() {
       >
         <DialogTitle>{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+          <DialogContentText id="alert-dialog-slide-description" className='message'>
           </DialogContentText>
+          <Typography
+          id="alert-dialog-slide-description"
+                component="p"
+                fontWeight='bold'
+                className='message'
+                style={{ display: 'none' }}
+              >
+              </Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Disagree</Button>

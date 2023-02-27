@@ -1,4 +1,5 @@
 // ** React Imports
+import * as React from 'react';
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -10,14 +11,41 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+
 // ** Icons Imports
 import DotsVertical from 'mdi-material-ui/DotsVertical'
-import { FormControl} from '@mui/material'
+import { FormControl } from '@mui/material'
 import Icon from '@mdi/react';
 import { mdiPause, mdiPlay, mdiStop } from '@mdi/js';
 import { clock } from 'src/clock/index'
 
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const CreateCounter = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
     <Card>
       <CardHeader
@@ -48,7 +76,7 @@ const CreateCounter = () => {
           <FormControl fullWidth sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
             <Box sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
               <TextField autoFocus fullWidth id='newProject' label='Ex: Consultoria' name='newProject' sx={{ width: '65%' }} />
-              
+
               <Typography
                 component="h2"
                 fontWeight='bold'
@@ -64,13 +92,15 @@ const CreateCounter = () => {
                 style={{ display: 'none' }}
               >
               </Typography>
-              
+
               <Button
-                fullWidth 
+                fullWidth
                 onClick={(e) => {
                   e.preventDefault()
                   clock()
+                  handleClickOpen()
                 }}
+
 
                 className='init'
 
@@ -78,11 +108,33 @@ const CreateCounter = () => {
                 variant='contained'
                 sx={{ width: '20%' }}
               >
-                Iniciar <Icon path={mdiPlay} size={1} style={{ marginLeft: 6} } />
+                Iniciar <Icon path={mdiPlay} size={1} style={{ marginLeft: 6 }} />
               </Button>
+              <Dialog
+                open={open}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <DialogTitle>{"Sua Tarefa foi iniciada!"}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-slide-description" className='message'>
+                  </DialogContentText>
+                  <Typography
+                    id="alert-dialog-slide-description"
+                    component="p"
+                    fontWeight='bold'
+                    className='message'
+                  >
+                  </Typography>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>OK!</Button>
+                </DialogActions>
+              </Dialog>
 
               <Button
-                fullWidth 
+                fullWidth
                 onClick={(e) => {
                   e.preventDefault()
                   clock()
@@ -94,11 +146,11 @@ const CreateCounter = () => {
                 variant='contained'
                 sx={{ width: '10%', display: 'none' }}
               >
-                Pausar <Icon path={mdiPause} size={1} style={{ marginLeft: 2} } />
+                Pausar <Icon path={mdiPause} size={1} style={{ marginLeft: 2 }} />
               </Button>
 
               <Button
-                fullWidth 
+                fullWidth
                 onClick={(e) => {
                   e.preventDefault()
                   clock()
@@ -110,7 +162,7 @@ const CreateCounter = () => {
                 variant='contained'
                 sx={{ width: '10%', display: 'none' }}
               >
-                Parar <Icon path={mdiStop} size={1} style={{ marginLeft: 2} } />
+                Parar <Icon path={mdiStop} size={1} style={{ marginLeft: 2 }} />
               </Button>
             </Box>
 
@@ -118,6 +170,8 @@ const CreateCounter = () => {
 
         </form>
       </CardContent>
+      {/* <PopUp /> */}
+
     </Card>
   )
 }
