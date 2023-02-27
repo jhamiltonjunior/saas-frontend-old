@@ -17,7 +17,7 @@ import { ApexOptions } from 'apexcharts'
 // ** Custom Components Imports
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
-const TasksCreated = () => {
+const LogOfTasks = () => {
   // ** Hook
   const theme = useTheme()
 
@@ -97,7 +97,12 @@ const TasksCreated = () => {
         }
       />
       <CardContent sx={{ '& .apexcharts-xcrosshairs.apexcharts-active': { opacity: 0 } }}>
-        <ReactApexcharts type='bar' height={205} options={options} series={[{ data: [37, 57, 45, 75, 57, 40, 65] }]} />
+      <div className="old-timer">
+            <h2 className="old-timer-log">Seu log</h2>
+            <h3 className="old-timer-name"></h3>
+            <p className="old-timer-content"></p>
+        </div>
+        {/* <ReactApexcharts type='bar' height={205} options={options} series={[{ data: [37, 57, 45, 75, 57, 40, 65] }]} />
         <Box sx={{ mb: 7, display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' sx={{ mr: 4 }}>
             45%
@@ -106,10 +111,10 @@ const TasksCreated = () => {
         </Box>
         <Button fullWidth variant='contained'>
           Details
-        </Button>
+        </Button> */}
       </CardContent>
     </Card>
   )
 }
 
-export default TasksCreated
+export default LogOfTasks

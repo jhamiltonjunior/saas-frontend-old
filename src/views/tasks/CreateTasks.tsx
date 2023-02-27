@@ -72,10 +72,11 @@ const CreateCounter = () => {
         }}
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(3)} !important` }}>
-        <form method='POST' action='http://localhost:5001/api/' autoComplete='on'  >
+        <form method='POST' action='http://localhost:5001/api/' autoComplete='on'>
           <FormControl fullWidth sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
             <Box sx={{ width: 1, display: 'flex', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
-              <TextField autoFocus fullWidth id='newProject' label='Ex: Consultoria' name='newProject' sx={{ width: '65%' }} />
+              <TextField autoFocus fullWidth id='newProject' className='timer-name' label='Ex: Consultoria' name='newProject' sx={{ width: '65%' }} />
+              <div className="get-timer-name" style={ {display: 'none'} }></div>
 
               <Typography
                 component="h2"
@@ -83,14 +84,6 @@ const CreateCounter = () => {
                 className='clock'
               >
                 00:00:00
-              </Typography>
-
-              <Typography
-                component="p"
-                fontWeight='bold'
-                className='message'
-                style={{ display: 'none' }}
-              >
               </Typography>
 
               <Button
@@ -112,16 +105,16 @@ const CreateCounter = () => {
               </Button>
               <Dialog
                 open={open}
+                TransitionComponent={Transition}
                 keepMounted
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
               >
-                <DialogTitle>{"Sua Tarefa foi iniciada!"}</DialogTitle>
+                <DialogTitle>{"Status"}</DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-slide-description" className='message'>
                   </DialogContentText>
                   <Typography
-                    id="alert-dialog-slide-description"
                     component="p"
                     fontWeight='bold'
                     className='message'
