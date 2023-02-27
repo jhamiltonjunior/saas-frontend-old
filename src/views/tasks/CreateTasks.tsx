@@ -110,16 +110,8 @@ const CreateCounter = () => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
               >
-                <DialogTitle>{"Status"}</DialogTitle>
+                <DialogTitle>{"Sua Tarefa foi iniciada"}</DialogTitle>
                 <DialogContent>
-                  <DialogContentText id="alert-dialog-slide-description" className='message'>
-                  </DialogContentText>
-                  <Typography
-                    component="p"
-                    fontWeight='bold'
-                    className='message'
-                  >
-                  </Typography>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>OK!</Button>

@@ -28,7 +28,6 @@ export const clock = () => {
     const getTimerName = document.querySelector('.get-timer-name')
     const oldTimerName = document.querySelector('.old-timer-name')
 
-    const mensagem = document.querySelector('.message') as Element
     const oldTimer = document.querySelector('.old-timer')
     const oldTimerContent = document.querySelector('.old-timer-content')
     console.log(oldTimer)
@@ -65,8 +64,6 @@ export const clock = () => {
             clock.classList.remove('pausado')
             clearInterval(timer)
             iniciaRelogio()
-            mensagem.innerHTML = 'Sua tarefa foi iniciada'
-            mensagem.style.display = 'block'
 
             element.style.display = 'none'
             pause.style.display = 'flex'
@@ -78,8 +75,6 @@ export const clock = () => {
 
             clock.classList.add('pausado')
             clearInterval(timer)
-            mensagem.display = 'block'
-            mensagem.innerHTML = 'O seu Timer foi pausado'
         }
 
         if (element.classList.contains('stop')) {
@@ -112,14 +107,6 @@ export const clock = () => {
 
             segundos = 0
             clock.classList.remove('pausado')
-
-            mensagem.innerHTML = 'O seu Timer foi zerado'
-
-            setInterval(function () {
-                mensagem.innerHTML = ''
-                mensagem.style.padding = '0px 0px'
-                mensagem.style.border = '0px solid black'
-            }, 4000)
         }
     })
 
