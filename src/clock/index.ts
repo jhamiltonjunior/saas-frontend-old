@@ -10,10 +10,10 @@ export const clock = () => {
     }
 
 
-    const clock = document.querySelector('.clock') as Element
-    const init = document.querySelector('.init') as Element
-    const pause = document.querySelector('.pause') as Element
-    const stop = document.querySelector('.stop') as Element
+    const clock = document.querySelector('.clock') as HTMLElement
+    const init = document.querySelector('.init') as HTMLElement
+    const pause = document.querySelector('.pause') as HTMLElement
+    const stop = document.querySelector('.stop') as HTMLElement
 
     // não preciso dessas variaveis
     // preciso apenas quando for usar a segundo opção de código
@@ -22,15 +22,20 @@ export const clock = () => {
     // const pausar = document.querySelector('.pausar')
     // const zerar = document.querySelector('.zerar')
 
-    const input = document.querySelector('input')
-    const insertTimerName = document.querySelector('.insert-timer-name')
+    const timerName = document.querySelector('.timer-name')?.querySelector('input') as HTMLInputElement
+    console.log(timerName.value)
+    const insertTimerName = document.querySelector('.insert-timer-name') as HTMLElement
 
-    const getTimerName = document.querySelector('.get-timer-name')
-    const oldTimerName = document.querySelector('.old-timer-name')
+    const getTimerName = document.querySelector('.get-timer-name') as HTMLElement
+    const oldTimerName = document.querySelector('.old-timer-name') as HTMLElement
 
-    const oldTimer = document.querySelector('.old-timer')
-    const oldTimerContent = document.querySelector('.old-timer-content')
-    console.log(oldTimer)
+    console.log(getTimerName)
+    console.log(oldTimerName)
+
+
+    const oldTimer = document.querySelector('.old-timer') as HTMLElement
+    const oldTimerContent = document.querySelector('.old-timer-content') as HTMLElement
+
     let segundos = 0
     let timer: NodeJS.Timer
 
@@ -49,18 +54,18 @@ export const clock = () => {
     // isso vai fzr alguma coisa quando eu clicar no  
     // botao de iniciar/pausar/zerar no HTML
     document.addEventListener('click', function (e) {
-        const element = e.target
+        const element = e.target as HTMLElement
 
-        if (element && input && getTimerName) {
+        if (getTimerName) {
             if (element.classList.contains('insert-timer-name')) {
-                if (input.classList.contains('timer-name')) {
-                    getTimerName.innerHTML = input.value
-                    input.value = ""
+                if (timerName.classList.contains('timer-name')) {
+                    getTimerName.innerHTML = timerName.value 
+                    timerName.value = ""
                 }
             }
         }
 
-        if (element && element.classList.contains('init')) {
+        if (element.classList.contains('init')) {
             clock.classList.remove('pausado')
             clearInterval(timer)
             iniciaRelogio()
@@ -71,7 +76,7 @@ export const clock = () => {
         }
 
         if (element.classList.contains('pause')) {
-            if (clock.textContent == '00:00:00') return
+            if (clock.textContent === '00:00:00') return
 
             clock.classList.add('pausado')
             clearInterval(timer)
