@@ -39,7 +39,7 @@ const CardUser = () => {
             <Typography variant='h6'>Robert Meyer</Typography>
             <Typography variant='caption'>London, UK</Typography>
           </Box>
-          <Button variant='contained'>Send Request</Button>
+          <Button sx={{ backgroundColor: '#1D4ED8' }} variant='contained'>Send Request</Button>
         </Box>
         <Box sx={{ gap: 2, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant='subtitle2' sx={{ whiteSpace: 'nowrap', color: 'text.primary' }}>
