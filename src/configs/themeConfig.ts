@@ -13,6 +13,7 @@ type ThemeConfig = {
   menuTextTruncate: boolean
   contentWidth: ContentWidth
   responsiveFontSizes: boolean
+  defaultBackgroundColor: string
 }
 
 const themeConfig: ThemeConfig = {
@@ -30,7 +31,8 @@ const themeConfig: ThemeConfig = {
 
   // ** Other Configs
   responsiveFontSizes: true /* true | false */,
-  disableRipple: false /* true | false */
+  disableRipple: false /* true | false */,
+  defaultBackgroundColor: '#1D4ED8' /* #12BEFC */,
 }
 
 export default themeConfig
