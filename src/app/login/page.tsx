@@ -59,31 +59,6 @@ export default function Home() {
       return
     }
 
-    if (message === 'email exist') {
-      
-      const message = document.querySelector('.message-component') as HTMLElement
-      const span = document.querySelector('.message-component span') as HTMLElement
-      const emailInput = document.querySelector('[name="email"]') as HTMLElement
-      
-      emailInput.classList.add('border-red-500')
-      emailInput.classList.remove('border-zinc-950')
-
-      emailInput.addEventListener('focus', () => emailInput.classList.remove('border-red-500'))
-
-      span.innerHTML = 'Este Email Já Existe!'
-
-      message?.classList.remove('hidden')
-      // message?.classList.add('block')
-      message?.classList.add('fixed')
-
-      setTimeout(() => {
-        message?.classList.remove('block')
-        message?.classList.add('hidden')
-      }, 6000)
-
-      return 
-    }
-
     if (message?.token?.length > 10) {
       cookie.serialize('auth-token', message.token)
       window.location.replace('/workspace')
@@ -130,7 +105,8 @@ export default function Home() {
           Login
         </button>
 
-        <p className="mt-10 text-sm text-center text-gray-500">Já tem uma conta? <Link className="text-blue-500"  href="/login">Faça login aqui</Link>.</p>
+        <p className="mt-10 text-sm text-center text-gray-500">
+          Ainda não tem uma conta? <Link className="text-blue-500"  href="/register">Crie uma aqui</Link>.</p>
       </form>
     </>
   )

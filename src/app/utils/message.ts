@@ -2,18 +2,18 @@
 // primeiro elemento e o componente de mensagem
 // segundo elemento e o input que vai receber o focus
 export function message (
-  className: string[],
   message: string, 
-  element: HTMLElement,
   levelOfAlert: string,
+  className?: string[],
+  element?: HTMLElement,
 
   ) {
   let setComponentColor = ''
   let setSVGColor = ''
 
   if (levelOfAlert === 'success') {
-    setComponentColor = 'bg-green-100 border border-green-400 text-red-700'
-    setSVGColor = 'text-red-500'
+    setComponentColor = 'bg-green-50 border border-green-400 text-red-700'
+    setSVGColor = 'text-green-600'
 
 
   } 
@@ -38,30 +38,58 @@ export function message (
   const messageComponent = document.querySelector('.message-component') as HTMLElement
   const span = document.querySelector('.message-component span') as HTMLElement
   const svg = document.querySelector('.message-component span svg') as HTMLElement
+  
+  svg.classList.add(setSVGColor)
+  span.classList.add(setSVGColor)
 
-  element.classList.add(className[0])
-  element.classList.remove(className[1])
+  if (element && className) {
+    element.classList.add(className[0])
+    element.classList.remove(className[1])
 
-  element.addEventListener('focus', () => element.classList.remove('border-red-500'))
-  svg.addEventListener('click', () => {
-    messageComponent.classList.remove('block')
-    messageComponent.classList.add('hidden')
-    return
-  })
+    element.addEventListener('focus', () => {
+      element.classList.remove('border-red-500')
+      
+      messageComponent.classList.remove('block')
+      svg.classList.remove(setSVGColor)
+      span.classList.remove(setSVGColor)
+      
+      messageComponent.classList.add('hidden')
+      
+      for (const classNames of setComponentColor.split(' ')) {
+        messageComponent.classList.remove(classNames)
+        svg.classList.remove(setSVGColor)
+      }
+    })
+  }
+  
 
   messageComponent.classList.remove('hidden')
   messageComponent.classList.add('fixed')
 
   span.innerHTML = message
-  svg.classList.add(`${setSVGColor}`)
   messageComponent.classList.add('transition')
+
   for (const classNames of setComponentColor.split(' ')) {
     messageComponent.classList.add(classNames)
   }
 
-  setTimeout(() => {
+  svg.addEventListener('click', () => {
     messageComponent.classList.remove('block')
     messageComponent.classList.add('hidden')
-  }, 6000)
+    
+    svg.classList.remove(setSVGColor)
+    span.classList.remove(setSVGColor)
+    
+    for (const classNames of setComponentColor.split(' ')) {
+      messageComponent.classList.remove(classNames)
+    }
+  })
+
+  // if(messageComponent.classList.contains('block')){
+  //   setTimeout(() => {
+  //     messageComponent.classList.remove('block')
+  //     messageComponent.classList.add('hidden')
+  //   }, 6000)
+  // }
 
 }

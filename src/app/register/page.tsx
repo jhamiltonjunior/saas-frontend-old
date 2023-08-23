@@ -9,6 +9,9 @@ import cookie from 'cookie'
 
 export const REGISTER_USER = process.env.NEXT_PUBLIC_REGISTER_USER
 const MISSING_PARAM = 'Missing Param Error'
+const INVALID_NAME = 'InvalidNameError'
+const INVALID_EMAIL = 'InvalidEmailError'
+const INVALID_PASSWD = 'InvalidPasswordError'
 
 const classOfLabel = 'block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2'
 const classOfInput = 'appearance-none block w-full text-zinc-950 border default-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
@@ -28,10 +31,10 @@ export default function Home() {
 
     if (name.length < 2 || name.length > 255) {
       messageFunction(
-        ['border-red-500', 'border-zinc-950'],
         'Insira um nome válido!',
+        'error',
+        ['border-red-500', 'border-zinc-950'],
         document.querySelector('[name="name"]') as HTMLElement,
-        'error'
       )
 
       return
@@ -39,10 +42,10 @@ export default function Home() {
 
     if (password.length < 6 || password.length > 33) {
       messageFunction(
-        ['border-red-500', 'border-zinc-950'],
         'Insira uma senha entre 6 e 33 caracteres!',
+        'error',
+        ['border-red-500', 'border-zinc-950'],
         document.querySelector('[name="password"]') as HTMLElement,
-        'error'
       )
       return 
     }
@@ -81,26 +84,61 @@ export default function Home() {
     if (message === 'email exist') {
 
       messageFunction(
-        ['border-red-500', 'border-zinc-950'],
         'Este Email Já Existe!',
+        'error',
+        ['border-red-500', 'border-zinc-950'],
         document.querySelector('[name="email"]') as HTMLElement,
-        'error'
       )
 
       return
     }
 
-    // posso pegar por document.querySelector('.message-component')
+    if (message === INVALID_NAME) {
 
-    // console.log(message)
+      messageFunction(
+        'Insira um nome válido!',
+        'error',
+        ['border-red-500', 'border-zinc-950'],
+        document.querySelector('[name="email"]') as HTMLElement,
+      )
 
-    return <h1>Isso funciona!</h1>
+      return
+    }
+
+    if (message === INVALID_EMAIL) {
+
+      messageFunction(
+        'Insira um email válido!',
+        'error',
+        ['border-red-500', 'border-zinc-950'],
+        document.querySelector('[name="email"]') as HTMLElement,
+      )
+
+      return
+    }
+
+    if (message === INVALID_PASSWD) {
+
+      messageFunction(
+        'Insira uma senha válida!',
+        'error',
+        ['border-red-500', 'border-zinc-950'],
+        document.querySelector('[name="email"]') as HTMLElement,
+      )
+
+      return
+    }
 
     if (message?.token?.length > 10) {
       // cookies().set('auth-token', message.token)
       cookie.serialize('auth-token', message.token)
-      window.location.replace('/workspace')
-      // redirect('/workspace')
+      messageFunction(
+        'Conta criada com sucesso!',
+        'success',
+      )
+      setTimeout(() => {
+        window.location.replace('/workspace')
+      }, 3000)
     }
   }
 
