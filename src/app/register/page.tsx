@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image'
 import Message from '@/components/message'
-import React, { useState } from 'react'
-import { redirect, useRouter } from 'next/navigation'
+import { message as messageFunction } from '@/app/utils/message'
+import Link from 'next/link'
 
 import cookie from 'cookie'
 
@@ -14,18 +14,38 @@ const classOfLabel = 'block uppercase tracking-wide text-gray-700 text-sm font-b
 const classOfInput = 'appearance-none block w-full text-zinc-950 border default-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
 
 export default function Home() {
-  let string = ''
   const handleSubmit = async (event: any) => {
     event.preventDefault()
 
     const data = new FormData(event.target)
 
-    const name = data.get('name')
-    const email = data.get('email')
-    const password = data.get('password')
+    const name = data.get('name')?.toString().trim().replace(/( )+/g, ' ') as FormDataEntryValue
+    const email = data.get('email') as FormDataEntryValue
+    const password = data.get('password')?.toString() as FormDataEntryValue
     const cpfCnpj = data.get('cpfCnpj')
     const mobilePhone = data.get('mobilePhone')
     const notificationDisabled = data.get('notificationDisabled')
+
+    if (name.length < 2 || name.length > 255) {
+      messageFunction(
+        ['border-red-500', 'border-zinc-950'],
+        'Insira um nome válido!',
+        document.querySelector('[name="name"]') as HTMLElement,
+        'error'
+      )
+
+      return
+    }
+
+    if (password.length < 6 || password.length > 33) {
+      messageFunction(
+        ['border-red-500', 'border-zinc-950'],
+        'Insira uma senha entre 6 e 33 caracteres!',
+        document.querySelector('[name="password"]') as HTMLElement,
+        'error'
+      )
+      return 
+    }
 
     const response = await fetch(`${REGISTER_USER}`, {
       method: 'POST',
@@ -59,33 +79,22 @@ export default function Home() {
     }
 
     if (message === 'email exist') {
-      
-      const message = document.querySelector('.message-component') as HTMLElement
-      const span = document.querySelector('.message-component span') as HTMLElement
-      const emailInput = document.querySelector('[name="email"]') as HTMLElement
-      
-      emailInput.classList.add('border-red-500')
-      emailInput.classList.remove('border-zinc-950')
 
-      emailInput.addEventListener('focus', () => emailInput.classList.remove('border-red-500'))
+      messageFunction(
+        ['border-red-500', 'border-zinc-950'],
+        'Este Email Já Existe!',
+        document.querySelector('[name="email"]') as HTMLElement,
+        'error'
+      )
 
-      span.innerHTML = 'Este Email Já Existe!'
-
-      message?.classList.remove('hidden')
-      // message?.classList.add('block')
-      message?.classList.add('fixed')
-
-      setTimeout(() => {
-        message?.classList.remove('block')
-        message?.classList.add('hidden')
-      }, 6000)
-
-      return 
+      return
     }
 
     // posso pegar por document.querySelector('.message-component')
 
     // console.log(message)
+
+    return <h1>Isso funciona!</h1>
 
     if (message?.token?.length > 10) {
       // cookies().set('auth-token', message.token)
@@ -185,17 +194,19 @@ export default function Home() {
               id="checked-checkbox"
               type="checkbox"
               name="notificationDisabled"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-            <label htmlFor="checked-checkbox" className="ml-2 text-sm font-medium text-black">Deseja receber notificações?</label>
+              className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label htmlFor="checked-checkbox" className="cursor-pointer ml-2 text-sm font-medium text-black">Deseja receber notificações?</label>
           </div>
         </div>
 
         <button
-            // onClick={handleSubmit(this)}
+          // onClick={handleSubmit(this)}
           type="submit"
           className="w-full mt-10 text-white font-bold py-2 px-4 rounded default-button">
           Registrar-se
         </button>
+
+        <p className="mt-10 text-sm text-center text-gray-500">Já tem uma conta? <Link className="text-blue-500"  href="/login">Faça login aqui</Link>.</p>
       </form>
     </>
   )
