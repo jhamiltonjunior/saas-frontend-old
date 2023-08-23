@@ -1,4 +1,3 @@
-import Message from "@/components/message"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -13,9 +12,7 @@ export default function RegisterLayout({
 }) {
   return (
     <>
-      <Message levelOfAlert="error" />
       <section className="flex flex-col items-center justify-center min-h-screen py-2">
-
         {children}
       </section>
     </>
