@@ -2,7 +2,7 @@ import Message from "@/components/message"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'Keep a lively mind',
+  title: 'Keep a lively mind - Keepyboard - Keep a Live - Keep note live',
   description: 'Registre-se para acessar o sistema',
 }
 

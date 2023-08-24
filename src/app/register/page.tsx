@@ -12,6 +12,7 @@ const MISSING_PARAM = 'Missing Param Error'
 const INVALID_NAME = 'InvalidNameError'
 const INVALID_EMAIL = 'InvalidEmailError'
 const INVALID_PASSWD = 'InvalidPasswordError'
+const EMAIL_EXIST = 'email exist'
 
 const classOfLabel = 'block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2'
 const classOfInput = 'appearance-none block w-full text-zinc-950 border default-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
@@ -81,10 +82,10 @@ export default function Home() {
       return
     }
 
-    if (message === 'email exist') {
+    if (message === EMAIL_EXIST) {
 
       messageFunction(
-        'Este Email Já Existe!',
+        'Este Email Já Existe! <a href="/login">Tente fazer login</a>!',
         'error',
         ['border-red-500', 'border-zinc-950'],
         document.querySelector('[name="email"]') as HTMLElement,
@@ -129,9 +130,16 @@ export default function Home() {
       return
     }
 
-    if (message?.token?.length > 10) {
-      // cookies().set('auth-token', message.token)
-      cookie.serialize('auth-token', message.token)
+    if (message?.token.length > 10) {
+      document.cookie = `${process.env.NEXT_PUBLIC_COOKIE_NAME}=${message.token}`
+
+      // possivel codigo para pegar o toke
+      // ele pega o token que esta no cookie
+      // document.cookie.split(';')
+      //   .filter((item) => item.includes(`${process.env.NEXT_PUBLIC_COOKIE_NAME}`))
+      //   .join('')
+      //   .split('=')[1]
+
       messageFunction(
         'Conta criada com sucesso!',
         'success',
