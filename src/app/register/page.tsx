@@ -1,10 +1,9 @@
 'use client'
 import Image from 'next/image'
 import Message from '@/components/message'
-import { message as messageFunction } from '@/app/utils/message'
+import { message as messageFunction } from '../utils/message'
 import Link from 'next/link'
 
-import cookie from 'cookie'
 
 
 export const REGISTER_USER = process.env.NEXT_PUBLIC_REGISTER_USER

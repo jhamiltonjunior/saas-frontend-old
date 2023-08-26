@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Registre-se para acessar o sistema',
 }
 
-export default function RegisterLayout({
+export default function LoginLayout({
   children,
 }: {
   children: React.ReactNode

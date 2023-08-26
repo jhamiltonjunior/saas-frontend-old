@@ -1,21 +1,13 @@
 'use client'
-import Image from 'next/image'
-import Link from 'next/link'
+
+import Link from "next/link"
 
 import { handleLoginSubmit } from "@/app/utils/handleLoginSubmit"
-
-
-export const AUTH_USER = process.env.NEXT_PUBLIC_AUTH_USER
-const MISSING_PARAM = 'Missing Param Error'
-const INVALID_EMAIL = 'InvalidEmailError'
-const INVALID_PASSWD = 'InvalidPasswordError'
-const EMAIL_NOT_EXIST = 'this email not exist'
-const PASSWD_NOT_MATCH = 'passwd not match'
 
 const classOfLabel = 'block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2'
 const classOfInput = 'appearance-none block w-full text-zinc-950 border default-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
 
-export default function Home() {
+export default function FormLogin() {
   return (
     <>
       <form
