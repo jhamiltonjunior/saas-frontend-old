@@ -5,34 +5,25 @@ import FormLogin from '@/components/forms/formLogin'
 import Sidebar from '@/components/sidebar'
 
 export default async function Page() {
-  const token = await getCookie()
+  // const token = await getCookie()
 
-  if (!token) {
-    return (
-      <main>
-        <FormLogin />
-      </main>
-    )
-  }
+  // if (!token) {
+  //   return (
+  //     <section className="fixed z-50 bg-opacity-25 flex backdrop-blur-sm items-center justify-center w-screen h-screen space-x-6 bg-gray-300">
+  //       <FormLogin />
+  //     </section>
+  //   )
+  // }
 
-  const verified = await verify(token)
+  // const verified = await verify(token)
 
-  if (verified === 'Unauthorized') {
-    return (
-      <section 
-      className="backdrop-blur-sm w-full h-screen flex flex-col items-center justify-center min-h-screen"
-      >
-        <Sidebar></Sidebar>
-        {/* <h1 className="text-2xl font-bold pb-10 fixed top-[7%]">
-          Não Autorizado
-        </h1>
-        <p className="text-xl pb-10">
-          Voce não está autorizado a acessar esta página. Tente fazer login.
-        </p>
-        <FormLogin /> */}
-      </section>
-    )
-  }
+  // if (verified === 'Unauthorized') {
+  //   return (
+  //     <section className="fixed z-50 bg-opacity-25 flex backdrop-blur-sm items-center justify-center w-screen h-screen space-x-6 bg-gray-300">
+  //       <FormLogin />
+  //     </section>
+  //   )
+  // }
 
   return (
     <form>
