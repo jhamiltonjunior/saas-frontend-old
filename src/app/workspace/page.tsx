@@ -3,6 +3,7 @@ import { getCookie } from '../api/getCookie'
 import { verify } from '../utils/verify'
 import FormLogin from '@/components/forms/formLogin'
 import Sidebar from '@/components/sidebar'
+import Card from '@/components/card'
 
 export default async function Page() {
   // const token = await getCookie()
@@ -24,10 +25,19 @@ export default async function Page() {
   //     </section>
   //   )
   // }
-
+  
   return (
-    <form>
-      {/* <button type="submit">{verified}</button> */}
-    </form>
+    <section
+    className="page-workspace col-span-14 grid grid-flow-col auto-cols-max gap-3 overflow-y-auto w-full h-full bg-white rounded-lg relative"
+    >
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </section>
   )
 }

@@ -8,7 +8,8 @@ import Search from './search'
 export default function Header() {
 
   return (
-    <header className="absolute top-0 left-0 h-14 flex items-center justify-between px-4 w-full bg-white">
+    // <header className="absolute top-0 left-0 h-14 flex items-center justify-between px-4 w-full bg-white">
+    <header className="col-span-full h-14 flex items-center justify-between px-4 w-full bg-white">
 
       <section>
         <a className="flex items-center" href="#">
