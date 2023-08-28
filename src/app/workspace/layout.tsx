@@ -8,18 +8,6 @@ export const metadata: Metadata = {
   description: 'Registre-se para acessar o sistema',
 }
 
-
-// tentar adicionar um grid manualmente ou pelo tailwind
-// que seja de uns 16 colunas e uma linha de 56px
-
-// depois de criar o grid, adicionar um componente que
-// serve para fazer o dropdown do sidebar
-
-
-// fazer uma div para adicionar um sidebar com butao de abrir e fechar
-
-// repeat(16, minmax(0, 1fr))
-
 export default function WorkspaceLayout({
   children,
 }: {

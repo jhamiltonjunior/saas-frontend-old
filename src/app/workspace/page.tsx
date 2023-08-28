@@ -3,7 +3,7 @@ import { getCookie } from '../api/getCookie'
 import { verify } from '../utils/verify'
 import FormLogin from '@/components/forms/formLogin'
 import Sidebar from '@/components/sidebar'
-import Card from '@/components/card'
+import List from '@/components/list'
 
 export default async function Page() {
   // const token = await getCookie()
@@ -28,16 +28,16 @@ export default async function Page() {
   
   return (
     <section
-    className="page-workspace col-span-14 grid grid-flow-col auto-cols-max gap-3 overflow-y-auto w-full h-full bg-white rounded-lg relative"
+    className="page-workspace col-span-14 grid grid-flow-col auto-cols-max gap-3 overflow-y-auto w-full h-full bg-white rounded-lg p-2"
     >
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <List />
+      <List />
+      <List />
+      <List />
+      <List />
+      <List />
+      <List />
+      <List />
     </section>
   )
 }

@@ -58,8 +58,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
-  position: absolute;
-  
+  scroll-padding-block: 6px;
 }
 
 /* Track */
